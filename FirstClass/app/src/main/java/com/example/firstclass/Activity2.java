@@ -10,20 +10,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class Activity2 extends AppCompatActivity {
     EditText edt1,edt2;
-    Button btnCalcular,btnIrResta;
+    Button btnCalcular,btnIrSuma;
     TextView txt1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_2);
 
         edt1 = findViewById(R.id.edt1);
         edt2 = findViewById(R.id.edt2);
         btnCalcular = findViewById(R.id.btnCalcular);
-        btnIrResta = findViewById(R.id.btnIrResta);
+        btnIrSuma = findViewById(R.id.btnIrSuma);
         txt1 = findViewById(R.id.txt1);
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
@@ -33,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
                 String cajita2 =edt2.getText().toString();
 
                 if (!cajita.equals("") && !cajita2.equals("")){
-                    int suma= Integer.parseInt(cajita) + Integer.parseInt(cajita2);
+                    int resta= Integer.parseInt(cajita) - Integer.parseInt(cajita2);
 
-                    txt1.setText(suma+"");
+                    txt1.setText(resta+"");
                 }else{
-                    Toast.makeText(MainActivity.this,"Digite los campos vacios",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Activity2.this,"Digite los campos vacios",Toast.LENGTH_LONG).show();
                     txt1.setText("0");
                     edt1.setText("");
                     edt2.setText("");
@@ -45,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        btnIrResta.setOnClickListener(new View.OnClickListener() {
+        btnIrSuma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Activity2.class);
+                Intent intent = new Intent(Activity2.this,MainActivity.class);
                 startActivity(intent);
                 finish();//para destruir la pantalla y al dar hacia atras se sale de la app
             }
